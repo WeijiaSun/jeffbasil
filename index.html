@@ -52,6 +52,7 @@
     if (candy && (candy.x <= newHead.x + GRID_SIZE && candy.x >= newHead.x - GRID_SIZE) && (candy.y <= newHead.y + GRID_SIZE && candy.y >= newHead.y - GRID_SIZE)) {
       candy = null;
       snakeLength += 5;
+      document.getElementById("score").innerHTML = snakeLength;
     }
 
     context.fillStyle = '#000';
@@ -102,6 +103,7 @@
 })();
 </script>
 
+<h1 id="score"></h1>
 <h1>All the basils!</h1>
 <h2>If you want more basils, please go to <a href="http://jeffbasils.com">jeffbasils.com</a></h2>
 <h2>If you are having trouble seeing the basil, try clicking <a href="https://competent-villani-9a8db0.netlify.com/">here</a></h2>
