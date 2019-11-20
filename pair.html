@@ -7,6 +7,9 @@
 </script>
 
 <script>
-    var p = new Math.seedrandom('hello.');
-    document.getElementById("p1").innerHTML = p();
+    var date = new Date();
+    var dateString = "" + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours();
+    // var p = new Math.seedrandom(dateString);
+    // document.getElementById("p1").innerHTML = p();
+    document.getElementById("p1").innerHTML = dateString;
 </script>
