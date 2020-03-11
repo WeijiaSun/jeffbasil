@@ -1,0 +1,47 @@
+<h1 style="text-align: center;">Pair?</h1>
+
+<h1 id="p1" style="text-align: center;"></h1>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
+</script>
+
+<script>
+
+    function shuffle(array) {
+
+        var date = new Date();
+        var dateString = "" + date.getFullYear() + date.getMonth() + date.getDate();
+        var p = new Math.seedrandom(dateString);
+
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(p() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+    // Used like so
+    var arr = ["Chris", "Catherine", "Alice", "Weijia", "Dan", "Lisa", "Josh", "Vasken", "Sana"];
+    arr = shuffle(arr);
+
+    var result = "";
+
+    for (var i = 0; i < arr.length; i++) {
+        result += arr[i] + ", "
+    }
+
+    result += "\b\b."
+
+    document.getElementById("p1").innerHTML = result;
+</script>
