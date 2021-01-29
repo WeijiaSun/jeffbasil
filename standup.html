@@ -1,6 +1,10 @@
-<h1 style="text-align: center;margin-top: 50px;">Standup Order:</h1>
+<h1 style="text-align: center;margin-top: 50px;">DLS Standup Order:</h1>
 
 <h1 id="p1" style="text-align: center;margin: 5px 50px;"></h1>
+
+<h1 style="text-align: center;margin-top: 50px;">DLS2 Standup Order:</h1>
+
+<h1 id="p2" style="text-align: center;margin: 5px 50px;"></h1>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
 </script>
@@ -34,14 +38,21 @@
     // Used like so
     var arr = ["Chris", "Catherine", "Dan", "Lisa", "Vasken", "Aury", "Philip", "Alexandre", "Alex", "Julio", "Filipe", "Felipe B.", "Felipe D.", "Weijia", "Alice", "Nina", "Bonnie", "Luisa", "Bianca", "Drieli", "Leonardo", "Marcelo", "Maurício", "Jeferson", "Roy", "Laura"];
     arr = shuffle(arr);
-
+    var arr2 = ["Chris", "Catherine", "Lisa", "Alexandre", "Filipe", "Felipe D.", "Weijia", "Alice", "Maurício", "Nathan"];
+    arr2 = shuffle(arr2);
+    
     var result = "";
 
     for (var i = 0; i < arr.length; i++) {
         result += arr[i] + ", "
     }
+    for (var j = 0; j < arr2.length; j++) {
+        result2 += arr2[j] + ", "
+    }
     
     result = result.slice(0, -2) + ".";
+    result2 = result2.slice(0, -2) + ".";
     
     document.getElementById("p1").innerHTML = result;
+    document.getElementById("p2").innerHTML = result2;
 </script>
