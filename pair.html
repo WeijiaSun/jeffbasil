@@ -1,7 +1,18 @@
-<h1 style="text-align: center;">Pair?</h1>
+<h1 style="text-align: center;">Pairs?</h1>
 
 <h1 id="p1" style="text-align: center;"></h1>
-
+<div id="names" style="display: flex; flex-direction: column; align-items: center; font-weight: bold;">
+    <label>
+        <input type="checkbox"><span>Name1</span>
+    </label>
+    <label>
+        <input type="checkbox"><span>Name2</span>
+    </label>
+    <label>
+        <input type="checkbox"><span>Name3</span>
+    </label>
+    <button onClick="submit()">TEST</button>
+</div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
 </script>
 
@@ -29,6 +40,10 @@
         }
 
         return array;
+    },
+    
+    function submit() {
+        console.log("submit test");
     }
 
     // Used like so
