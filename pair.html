@@ -47,32 +47,26 @@
         var form = document.getElementById("names");
         var inputs = form.querySelectorAll("input");
         var nameArray = [];
+        var result = "";
         inputs.forEach(function(input){
             if(input.checked){
                 nameArray.push(input.name);
             }
         });
         nameArray = shuffle(nameArray);
-        console.log(nameArray);
-    }
-
-    // Used like so
-    var arr = ["Nathan", "Catherine", "Alice", "Weijia"];
-    arr = shuffle(arr);
-
-    var result = "";
-
-    for (var i = 0; i < arr.length; i++) {
-        if (i % 2 === 0) {
-            result += arr[i] + " and "
-        } else {
-            result += arr[i] + "<br />"
+       
+        for (var i = 0; i < nameArray.length; i++) {
+            if (i % 2 === 0) {
+                result += nameArray[i] + " and "
+            } else {
+                result += nameArray[i] + "<br />"
+            }
         }
-    }
 
-    if (arr.length % 2 === 1) {
-        result += "her/himself."
+        if (nameArray.length % 2 === 1) {
+            result += "her/himself."
+        }
+        document.getElementById("p1").innerHTML = result;
     }
-
-    document.getElementById("p1").innerHTML = result;
+    
 </script>
