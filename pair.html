@@ -3,13 +3,13 @@
 <h1 id="p1" style="text-align: center;"></h1>
 <div id="names" style="display: flex; flex-direction: column; align-items: center; font-weight: bold;">
     <label>
-        <input type="checkbox"><span>Name1</span>
+        <input type="checkbox" name="Name1"><span>Name1</span>
     </label>
     <label>
-        <input type="checkbox"><span>Name2</span>
+        <input type="checkbox" name="Name2"><span>Name2</span>
     </label>
     <label>
-        <input type="checkbox"><span>Name3</span>
+        <input type="checkbox" name="Name3"><span>Name3</span>
     </label>
     <button onClick="submit()">TEST</button>
 </div>
@@ -43,7 +43,14 @@
     }
     
     function submit() {
-        console.log("submit test");
+        console.log("testing submit");
+        var form = document.getElementById("names");
+        var inputs = form.querySelectorAll("input");
+        inputs.forEach(function(input){
+            if(input.checked){
+                console.log("checked:" + input.name);
+            }
+        });
     }
 
     // Used like so
