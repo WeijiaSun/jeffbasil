@@ -46,10 +46,13 @@
         console.log("testing submit");
         var form = document.getElementById("names");
         var inputs = form.querySelectorAll("input");
+        var nameArray = [];
         inputs.forEach(function(input){
             if(input.checked){
-                console.log("checked:" + input.name);
+                nameArray.push(input.name);
             }
+            nameArray = shuffle(nameArray);
+            console.log(nameArray);
         });
     }
 
