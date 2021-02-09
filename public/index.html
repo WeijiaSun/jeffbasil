@@ -26,17 +26,6 @@
             <main id="main">
             </main>
         </div>
-
-<!--
-        <div id="createUpdate" class="container" style="display:none;">
-            <h2>Create / Update Member</h2>
-            <input name="nameFirst" placeholder="first name" type="text"/><br/><br/>
-            <input name="nameLast" placeholder="last name" type="text"/><br/><br/>
-            <input name="email" placeholder="email" type="text"/><br/><br/>
-            <input name="editId" placeholder="ID" type="text" disabled/><br/><br/>
-            <button id="createMemberButton" class="editMember" type="submit">Submit</button><br/>
-        </div>
--->
         
         <!-- BEGIN modal component -->
         <div id="optionsModal" tabindex="-1" class="dds__modal dds__fade" role="dialog" aria-labelledby="dds__options-modal-title" aria-hidden="true" style="">
@@ -49,8 +38,19 @@
                 </div>
                 <button class="dds__close" data-dismiss="dds__modal" aria-label="Close"><span class="dds__icons dds__close-x" aria-hidden="true"></span></button>
                 <div class="dds__modal-body">
-                    <p>Background: <input type="text" class="dds__form-control" maxlength="256" name="changeBackground" id="changeBackground" /></p>
-                    
+                    <div>
+                        <h4>Background</h4>
+                        <input type="text" class="dds__form-control" maxlength="256" name="changeBackground" id="changeBackground" />
+                    </div>
+                                
+                    <div style="display:none;">
+                        <h4>Create / Update Member</h4>
+                        <div id="createUpdate" class="container">
+                            <input name="nameFirst" placeholder="first name" type="text"/><br/><br/>
+                            <input name="nameLast" placeholder="last initial" type="text"/><br/><br/>
+                            <button id="createMemberButton" class="editMember" type="submit">Submit</button><br/>
+                        </div>
+                    </div>
                 </div>
                 <div class="dds__modal-footer">
                 <button class="dds__btn dds__btn-secondary" data-dismiss="dds__modal">Cancel</button>

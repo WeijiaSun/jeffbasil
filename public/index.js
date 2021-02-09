@@ -104,13 +104,11 @@ window.onload = function () {
 
 }
 
-// document.getElementById('createMemberButton').onclick = () => {
-//     let cForm = document.getElementById('createUpdate');
-//     let newMember = {
-//         nameFirst: cForm.querySelector('[name="nameFirst"]').value,
-//         nameLast: cForm.querySelector('[name="nameLast"]').value,
-//         email: cForm.querySelector('[name="email"]').value,
-//         id: document.querySelectorAll('.member').length + 1
-//     }
-//     createMember(newMember);
-// }
+document.getElementById('createMemberButton').onclick = () => {
+    let cForm = document.getElementById('createUpdate');
+    let newMember = {
+        nameFirst: cForm.querySelector('[name="nameFirst"]').value,
+        nameLast: cForm.querySelector('[name="nameLast"]').value
+    }
+    createMember(newMember);
+}

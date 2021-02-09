@@ -1,13 +1,16 @@
 export function createMember(member) {
-    fetch("/members", {
+    let result = fetch("/members", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(member)
-    }).then(
-      alert('posted')
-    );
+    }).then((response) => {
+        alert('response in console');
+        console.log(response);
+    }).catch((e) => {
+        console.log(e);
+    });
   }
 
  export function shuffle(array) {
