@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://uicore.dellcdn.com/1.3.4/css/dds-reboot.min.css">
+        <link rel="stylesheet" href="https://uicore.dellcdn.com/1.3.4/css/dds-all-with-fonts.min.css">
+        <link rel="stylesheet" href="./style.css" />
+        <title>Jeff Basil</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    </head>
+
+    <body>
+        <div id="dds__full-screen-overlay" class="dds__overlay"></div>
+        <header>
+            <nav class="container">
+                <ul id="mainNav">
+                    <li><a href="javascript:void(0)" data-toggle="dds__modal" data-target="#optionsModal">Options</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container">
+            <main id="main">
+            </main>
+        </div>
+        
+        <!-- BEGIN modal component -->
+        <div id="optionsModal" tabindex="-1" class="dds__modal dds__fade" role="dialog" aria-labelledby="dds__options-modal-title" aria-hidden="true" style="">
+            <div class="dds__modal-dialog" role="document">
+            <div class="dds__modal-content">
+                <div class="dds__modal-header">
+                <h3 class="dds__modal-title" id="dds__options-modal-title">
+                    Options
+                </h3>
+                </div>
+                <button class="dds__close" data-dismiss="dds__modal" aria-label="Close"><span class="dds__icons dds__close-x" aria-hidden="true"></span></button>
+                <div class="dds__modal-body">
+                    <div>
+                        <h4>Background</h4>
+                        <input type="text" class="dds__form-control" maxlength="256" name="changeBackground" id="changeBackground" />
+                    </div>
+                                
+                    <div style="display:none;">
+                        <h4>Create / Update Member</h4>
+                        <div id="createUpdate" class="container">
+                            <input name="nameFirst" placeholder="first name" type="text"/><br/><br/>
+                            <input name="nameLast" placeholder="last initial" type="text"/><br/><br/>
+                            <button id="createMemberButton" class="editMember" type="submit">Submit</button><br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="dds__modal-footer">
+                <button class="dds__btn dds__btn-secondary" data-dismiss="dds__modal">Cancel</button>
+                <button id="saveBackgroundButton" class="dds__btn dds__btn-primary">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- END modal component -->
+
+        <script src="https://uicore.dellcdn.com/1.3.4/js/index.min.js"></script>
+        <script>
+
+            const data = {
+        "members": [
+        { "tags": [ "PM" ], "nameLast": "B", "nameFirst": "Marcelo", "id": 0 },
+            { "tags": [ "DV" ], "nameLast": "B", "nameFirst": "Catherine", "id": 1 },
+            { "tags": [ "DV" ], "nameLast": "C", "nameFirst": "Alexandre", "id": 2 },
+            { "tags": [ "DV" ], "nameLast": "C", "nameFirst": "Irene", "id": 3 },
+            { "tags": [ "DV" ], "nameLast": "C", "nameFirst": "Mauricio", "id": 4 },
+            { "tags": [ "DV" ], "nameLast": "D", "nameFirst": "Jared", "id": 5 },
+            { "tags": [ "DV" ], "nameLast": "D", "nameFirst": "Felipe", "id": 6 },
+            { "tags": [ "DV" ], "nameLast": "E", "nameFirst": "Isaac", "id": 7 },
+            { "tags": [ "DV" ], "nameLast": "G", "nameFirst": "Jeferson", "id": 8 },
+            { "tags": [ "DV" ], "nameLast": "L", "nameFirst": "Alice", "id": 9 },
+            { "tags": [ "DV" ], "nameLast": "M", "nameFirst": "Laura", "id": 10 },
+            { "tags": [ "DV" ], "nameLast": "M", "nameFirst": "Bonnie", "id": 11 },
+            { "tags": [ "DV" ], "nameLast": "M", "nameFirst": "Keilla", "id": 12 },
+            { "tags": [ "DV" ], "nameLast": "O", "nameFirst": "Chris", "id": 13 },
+            { "tags": [ "DV" ], "nameLast": "O", "nameFirst": "Dan", "id": 14 },
+            { "tags": [ "PM" ], "nameLast": "S", "nameFirst": "Philip", "id": 15 },
+            { "tags": [ "DV" ], "nameLast": "S", "nameFirst": "Filipe", "id": 16 },
+            { "tags": [ "PM" ], "nameLast": "S", "nameFirst": "Lisa", "id": 17 },
+            { "tags": [ "DV" ], "nameLast": "S", "nameFirst": "Nathan", "id": 18 },
+            { "tags": [ "DV" ], "nameLast": "S", "nameFirst": "Weijia", "id": 19 },
+            { "tags": [ "DV" ], "nameLast": "T", "nameFirst": "Julio", "id": 20 },
+            { "tags": [ "DS" ], "nameLast": "B", "nameFirst": "Josh", "id": 21 },
+            { "tags": [ "DS" ], "nameLast": "B", "nameFirst": "Felipe", "id": 22 },
+            { "tags": [ "DS" ], "nameLast": "B", "nameFirst": "Aury", "id": 23 },
+            { "tags": [ "DS" ], "nameLast": "D", "nameFirst": "Michael", "id": 24 },
+            { "tags": [ "DS" ], "nameLast": "G", "nameFirst": "Nancy", "id": 25 },
+            { "tags": [ "DS" ], "nameLast": "L", "nameFirst": "Leslie", "id": 26 },
+            { "tags": [ "DS" ], "nameLast": "L", "nameFirst": "Drieli", "id": 27 },
+            { "tags": [ "DS" ], "nameLast": "M", "nameFirst": "Alexandre", "id": 28 },
+            { "tags": [ "DS" ], "nameLast": "R", "nameFirst": "Leonardo", "id": 29 },
+            { "tags": [ "DS" ], "nameLast": "S", "nameFirst": "Bianca", "id": 30 },
+            { "tags": [ "DS" ], "nameLast": "S", "nameFirst": "Vasken", "id": 31 },
+            { "tags": [ "DS" ], "nameLast": "S", "nameFirst": "Luisa", "id": 32 },
+            { "tags": [ "DS" ], "nameLast": "V", "nameFirst": "Roy", "id": 33 },
+            { "tags": [ "DS" ], "nameLast": "V", "nameFirst": "Nina", "id": 34 },
+            { "tags": [ "DS" ], "nameLast": "W", "nameFirst": "Rachel", "id": 35 },
+            { "tags": [ "DV" ], "nameLast": "A", "nameFirst": "Igor", "id": 36 }
+        ],
+        "teams": [
+            { "id": 0, "name": "DLS 1.0", "nick": "Trexes", "members": [ 27, 30, 28, 22, 31, 15, 2, 16, 4, 6, 36, 35, 25 ] },
+            { "id": 1, "name": "DLS 2.0", "nick": "Stegos", "members": [ 18, 9, 1, 19, 2, 17, 33, 22, 29, 24, 34, 30, 28, 23, 32, 35, 25 ] },
+            { "id": 2, "name": "DLS 2.0 - Data Vis", "nick": "Pteros", "members": [ 7, 20, 11, 14, 15, 34, 23, 35, 25 ] },
+            { "id": 3, "name": "DLS 2.0 - website", "nick": "Raptors", "members": [ 12, 8, 10, 31, 33, 27, 32, 26, 29, 30, 23, 24, 3, 35, 25 ] },
+            { "id": 4, "name": "DLS 2.0 - Communications", "nick": "Diplos", "members": [ 12, 8, 10, 34, 33, 23, 27, 28, 32, 22, 0, 35, 25 ] }
+        ]
+    };
+    
+    function createMember(member) {
+        let result = fetch("/members", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(member)
+        }).then((response) => {
+            alert('response in console');
+            console.log(response);
+        }).catch((e) => {
+            console.log(e);
+        });
+    }
+
+    function shuffle(array) {
+
+        var date = new Date();
+        var dateString = "" + date.getFullYear() + date.getMonth() + date.getDate() + "1";
+        var p = new Math.seedrandom(dateString);
+
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(p() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            let teamId = urlParams.get('team');
+            if (teamId) {
+                teamId = Number(teamId);
+            } else {
+                teamId = 0;
+            }
+            let teamList,
+                selectedTeam,
+                memberList,
+                memberListForSelectedTeam = [];
+
+            teamList = data.teams;
+            for (var i = 0; i < teamList.length; i++) {
+                appendTeamLink(teamList, i);
+            }
+            listNames();
+
+            function appendTeamLink(team, i) {
+                var thisTeam = team[i];
+                var node = document.createElement("LI");  
+                var nLink = document.createElement("a", {
+                    "id": "team_" + thisTeam.id
+                });
+
+                if (thisTeam.id === teamId) {
+                    nLink.classList.add('selectedTeam');
+                }
+                nLink.setAttribute("href", "?team=" + thisTeam.id);
+                nLink.textContent = thisTeam.name;
+                node.appendChild(nLink);
+                document.getElementById("mainNav").appendChild(node);
+
+            }
+
+            function toggleName(e) {
+                if (e.target.classList.contains("memberToggled")) {
+                    e.target.classList.remove("memberToggled");
+                } else {
+                    e.target.classList.add("memberToggled");
+                }
+            }
+
+            function listNames() {
+                var randomizedList;
+                if (teamId != null && teamList) {
+                    selectedTeam = teamList[teamId];
+                    randomizedList = shuffle(selectedTeam.members);
+
+                    memberList = data.members;
+                    for (var i = 0; i < randomizedList.length; i++) {
+                        var thisMemberData,
+                            mainEl = document.getElementById("main");
+                            thisMemberData = memberList.find(x => x.id === randomizedList[i]);
+                        
+                        memberListForSelectedTeam.push(thisMemberData);
+                        var memberElement = document.createElement("a", {"id": "member" + thisMemberData.id});
+                        memberElement.setAttribute("href", "javascript:void(0)");
+                        memberElement.onclick = (e) => {
+                            toggleName(e);
+                        };
+                        memberElement.className = "member";
+                        memberElement.textContent = thisMemberData.nameFirst + thisMemberData.nameLast.substr(0, 1);
+                        mainEl.appendChild(memberElement);
+                    }
+
+                }
+            }
+
+            [].forEach.call(document.querySelectorAll('[data-toggle="dds__modal"]'), function(element) {
+                new UIC.Modal(element, {
+                    backdrop: 'static'
+                });
+            });
+
+
+            window.onload = function () {
+                var changeBackgroundInput = document.getElementById('changeBackground');
+                var body = document.getElementsByTagName('body')[0];
+                var existingBackground = getComputedStyle(body,'').getPropertyValue('background-image')
+                    .replace('url("', '')
+                    .replace('")', '');
+                changeBackgroundInput.value = existingBackground;
+
+                document.getElementById('saveBackgroundButton').onclick = (e) => {
+                    if (changeBackgroundInput.value.indexOf('http') > 0) {
+                        body.style.backgroundImage = changeBackgroundInput.value;
+                    } else {
+                        body.style.backgroundImage = 'url(' + changeBackgroundInput.value + ')';
+                    }
+                };
+
+            }
+
+        </script>
+    </body>
+</html>
