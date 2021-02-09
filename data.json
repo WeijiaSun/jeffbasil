@@ -39,7 +39,7 @@
     ],
     "teams": [
         { "id": 0, "name": "DLS 1.0", "nick": "Trexes", "members": [ 27, 30, 28, 22, 31, 15 ] },
-        { "id": 1, "name": "DLS 2.0", "nick": "Pteros", "members": [ 17, 13, 9, 19, 1, 18, 28, 16, 0, 6, 22, 29, 33, 21, 17, 23] },
+        { "id": 1, "name": "DLS 2.0", "nick": "Pteros", "members": [ 17, 13, 9, 19, 1, 18, 28, 16, 0, 6, 22, 24, 29, 33, 21, 17, 23] },
         { "id": 2, "name": "DLS 2.0 - Data Vis", "nick": "Stegos", "members": [ 7, 20, 11, 14, 15, 34, 23 ] },
         { "id": 3, "name": "DLS 2.0 - website", "nick": "Raptors", "members": [ 4 ] }
     ]
