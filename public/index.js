@@ -1,5 +1,7 @@
 import { createMember, shuffle } from './utilities.js';
 
+const json = require('../data.json')
+
 const urlParams = new URLSearchParams(window.location.search);
 let teamId = urlParams.get('team');
 if (teamId) {
@@ -12,15 +14,11 @@ let teamList,
     memberList,
     memberListForSelectedTeam = [];
 
-fetch("/teams/")
-.then(response => response.json())
-.then(json => {
-    teamList = json;
-    for (var i = 0; i < json.length; i++) {
-        appendTeamLink(json, i);
-    }
-    listNames();
-});
+teamList = json;
+for (var i = 0; i < json.length; i++) {
+    appendTeamLink(json, i);
+}
+listNames();
 
 function appendTeamLink(json, i) {
     var thisTeam = json[i];
