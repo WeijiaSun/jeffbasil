@@ -1,4 +1,4 @@
-{
+export const data = {
     "members": [
       { "tags": [ "PM" ], "nameLast": "B", "nameFirst": "Marcelo", "id": 0 },
           { "tags": [ "DV" ], "nameLast": "B", "nameFirst": "Catherine", "id": 1 },
@@ -38,9 +38,49 @@
           { "tags": [ "DS" ], "nameLast": "W", "nameFirst": "Rachel", "id": 35 }
     ],
     "teams": [
-        { "id": 0, "name": "DLS 1.0", "nick": "Trexes", "members": [ 27, 30, 28, 22, 31, 15 ] },
-        { "id": 1, "name": "DLS 2.0", "nick": "Pteros", "members": [ 17, 13, 9, 19, 1, 18, 28, 16, 0, 6, 22, 24, 29, 33, 21, 17, 23] },
-        { "id": 2, "name": "DLS 2.0 - Data Vis", "nick": "Stegos", "members": [ 7, 20, 11, 14, 15, 34, 23 ] },
-        { "id": 3, "name": "DLS 2.0 - website", "nick": "Raptors", "members": [ 4 ] }
+        { "id": 0, "name": "DLS 1.0", "nick": "Trexes", "members": [ 27, 30, 28, 22, 31, 15, 2, 16, 4, 6, 36, 35, 25 ] },
+        { "id": 1, "name": "DLS 2.0", "nick": "Stegos", "members": [ 18, 9, 1, 19, 2, 17, 33, 22, 29, 24, 34, 30, 28, 23, 32, 35, 25 ] },
+        { "id": 2, "name": "DLS 2.0 - Data Vis", "nick": "Pteros", "members": [ 7, 20, 11, 14, 15, 34, 23, 35, 25 ] },
+        { "id": 3, "name": "DLS 2.0 - website", "nick": "Raptors", "members": [ 12, 8, 10, 31, 33, 27, 32, 26, 29, 30, 23, 24, 3, 35, 25 ] }
+        { "id": 3, "name": "DLS 2.0 - Communications", "nick": "Diplos", "members": [ 12, 8, 10, 34, 33, 23, 27, 28, 32, 22, 0, 35, 25 ] }
     ]
+  };
+  
+export function createMember(member) {
+    let result = fetch("/members", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(member)
+    }).then((response) => {
+        alert('response in console');
+        console.log(response);
+    }).catch((e) => {
+        console.log(e);
+    });
   }
+
+ export function shuffle(array) {
+
+    var date = new Date();
+    var dateString = "" + date.getFullYear() + date.getMonth() + date.getDate() + "1";
+    var p = new Math.seedrandom(dateString);
+
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(p() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
