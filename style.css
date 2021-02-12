@@ -25,10 +25,16 @@ a:hover {
 }
 
 h1 {
+    color:red;
   margin: 0;
   font-size: 4rem;
   font-weight: 300;
   letter-spacing: 0.05em;
+  text-align: center !important;
+  text-shadow: -1px 1px 2px #000,
+    1px 1px 2px #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
 }
 
 @media (max-width: 768px) {
