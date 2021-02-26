@@ -8,7 +8,7 @@ body {
     color: rgba(0, 0, 0, 0.84);
     line-height: 1.5;
     padding: 0 100px !important;
-    background: url('https://media.giphy.com/media/WT9Sk9a2l8UpOnxwf5/giphy.gif');
+    background: url('https://www.gardeningknowhow.com/wp-content/uploads/2014/07/basil.jpg');
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,6 +78,7 @@ nav li a {
     white-space: nowrap;
     font-size: 0.925rem;
     font-family: inherit;
+    text-shadow: 2px 1px 5px #fff;
 }
 
 nav li a i {

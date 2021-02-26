@@ -53,6 +53,7 @@
                 </div>
                 <div class="dds__modal-footer">
                 <button class="dds__btn dds__btn-secondary" data-dismiss="dds__modal">Cancel</button>
+                <button id="resetBackgroundButton" class="dds__btn dds__btn-secondary">Reset</button>
                 <button id="saveBackgroundButton" class="dds__btn dds__btn-primary">Save changes</button>
                 </div>
             </div>
@@ -150,6 +151,81 @@
 
         return array;
     }
+    
+    var prefRef = "basilStandupPrefs",
+        prefs = initFromStorage(),
+        body = document.getElementsByTagName('body')[0];
+    function initFromStorage() {
+        var prefsToReturn,
+            prefsFromLocalStorage = localStorage.getItem(prefRef),
+            setDefaultPrefs = function() {
+                if (prefsToReturn.backgrounds == null) {
+                    prefsToReturn.backgrounds = [
+                        { "teamId": 0, "url": "https://media.giphy.com/media/3o6Zt2EaIuNqzXcHuw/giphy.gif" },
+                        { "teamId": 1, "url": "https://media.giphy.com/media/XFuYZvqNeIvn5izqAL/giphy.gif" },
+                        { "teamId": 2, "url": "https://media.giphy.com/media/wcrQ36BQUn59S/giphy.gif" },
+                        { "teamId": 3, "url": "https://media.giphy.com/media/oSB2kyVCBShna/giphy.gif" },
+                        { "teamId": 4, "url": "https://media.giphy.com/media/T9b13v9voa6q9Fhqex/giphy.gif" }
+                    ];
+                }
+            };
+
+        if (prefsFromLocalStorage == null) {
+            prefsToReturn = {};
+            setDefaultPrefs();
+            localStorage.setItem(prefRef, JSON.stringify(prefsToReturn));
+        } else {
+            prefsToReturn = JSON.parse(prefsFromLocalStorage);
+            setDefaultPrefs();
+            for (var key in prefs) {
+                try {
+                    if (prefs[key] === 'true' || prefs[key] === 'false') {
+                        prefs[key] = (prefs[key] == 'true')
+                    } else {
+                        prefs[key] = JSON.parse(prefs[key]);
+                    }
+                } catch (e) {
+                    prefs[key] = prefs[key];
+                }
+            }
+        }
+        return prefsToReturn;
+    };
+
+    function setBackground(newBkg) {
+        if (!newBkg) {
+            if (prefs.backgrounds) {
+                if (prefs.backgrounds.find(x => x.teamId === teamId)) {
+                    prefs.backgrounds.find(x => x.teamId === teamId).url = originalBackground;
+                } else {
+                    prefs.backgrounds.push({ 'teamId' : teamId, url: originalBackground})
+                }
+            } else {
+                prefs.backgrounds = [
+                    { 'teamId' : teamId, url: originalBackground}
+                ]
+            }
+            newBkg = originalBackground;
+        } else {
+            if (prefs.backgrounds) {
+                if (prefs.backgrounds.find(x => x.teamId === teamId)) {
+                    prefs.backgrounds.find(x => x.teamId === teamId).url = newBkg;
+                } else {
+                    prefs.backgrounds.push({ 'teamId' : teamId, url: newBkg})
+                }
+            } else {
+                prefs.backgrounds = [
+                    { 'teamId' : teamId, url: newBkg}
+                ]
+            }
+        }
+        localStorage.setItem(prefRef, JSON.stringify(prefs));
+        if (newBkg.indexOf('http') > 0) {
+            body.style.backgroundImage = newBkg;
+        } else {
+            body.style.backgroundImage = 'url(' + newBkg + ')';
+        }
+    }
 
             const urlParams = new URLSearchParams(window.location.search);
             let teamId = urlParams.get('team');
@@ -231,21 +307,31 @@
             });
 
 
+            // get existing background from style as defined in style.css
+            var existingBackground = getComputedStyle(body,'').getPropertyValue('background-image')
+                .replace('url("', '')
+                .replace('")', '');
+            var originalBackground = existingBackground; // this will always be what is in CSS
+            // override background if defined in preferences
+            var preferredBackground = prefs.backgrounds.find(bck => bck.teamId === teamId) ? prefs.backgrounds.find(bck => bck.teamId === teamId).url : null;
             window.onload = function () {
                 var changeBackgroundInput = document.getElementById('changeBackground');
-                var body = document.getElementsByTagName('body')[0];
-                var existingBackground = getComputedStyle(body,'').getPropertyValue('background-image')
-                    .replace('url("', '')
-                    .replace('")', '');
+                if (preferredBackground) {
+                    if (existingBackground != preferredBackground) {
+                        setBackground(preferredBackground);
+                    }
+                    existingBackground = preferredBackground;
+                }
+                // set background to chosen
                 changeBackgroundInput.value = existingBackground;
 
                 document.getElementById('saveBackgroundButton').onclick = (e) => {
-                    if (changeBackgroundInput.value.indexOf('http') > 0) {
-                        body.style.backgroundImage = changeBackgroundInput.value;
-                    } else {
-                        body.style.backgroundImage = 'url(' + changeBackgroundInput.value + ')';
-                    }
+                    setBackground(changeBackgroundInput.value);
                 };
+
+                document.getElementById('resetBackgroundButton').onclick = (e) => {
+                    setBackground();
+                }
 
             }
 
