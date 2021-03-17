@@ -109,8 +109,8 @@
             { "id": 0, "name": "DLS 1.0", "nick": "Stego", "members": [ 15, 36, 2, 16, 4, 6, 37, 28, 24 ] },
             { "id": 1, "name": "DLS 2.0", "nick": "Raptor", "members": [ 17, 18, 16, 1, 2, 9, 19, 33, 22, 29, 30, 24, 36, 37, 13, 21] },
             { "id": 2, "name": "DLS 2.0 - Data Vis", "nick": "Bronto", "members": [ 15, 14, 11, 20, 7, 23, 24 ] },
-            { "id": 3, "name": "DLS 2.0 - website", "nick": "TRex", "members": [ 3, 12, 8, 10, 27, 26, 32, 24, 25, 35, 4 ] },
-            { "id": 4, "name": "DLS 2.0 - Communications", "nick": "Trex2", "members": [ 0, 12, 8, 10, 34, 24, 25, 35, 4 ] }
+            { "id": 3, "name": "DLS 2.0 - website", "nick": "TRex", "members": [ 0, 12, 8, 10, 27, 26, 32, 24, 25, 35, 4 ] },
+            { "id": 4, "name": "DLS 2.0 - Communications", "nick": "Trex2", "members": [ 3, 12, 8, 10, 34, 24, 25, 35, 4 ] }
         ]
     };
     
@@ -294,7 +294,7 @@
                             toggleName(e);
                         };
                         memberElement.className = "member";
-                        memberElement.textContent = thisMemberData.nameFirst + thisMemberData.nameLast.substr(0, 1);
+                        memberElement.innerHTML = thisMemberData.nameFirst + "<span class='lastInitial'>" + thisMemberData.nameLast.substr(0, 1) + "</span>";
                         mainEl.appendChild(memberElement);
                     }
 

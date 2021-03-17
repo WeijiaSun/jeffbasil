@@ -117,6 +117,9 @@ a.member:hover {
 .memberToggled {
     opacity: 0.2;
 }
+.lastInitial {
+    opacity: 0.5;
+}
 
 .selectedTeam {
     font-weight: bold;
