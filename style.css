@@ -128,3 +128,8 @@ a.member:hover {
 ul {
   list-style: none;
 }
+
+.jsonholder {
+    width: 100%;
+    font-size: 0.625rem;
+}
