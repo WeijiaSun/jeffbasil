@@ -77,144 +77,133 @@
         <script src="https://uicore.dellcdn.com/1.3.4/js/index.min.js"></script>
         <script>
 
-            function createMember(member) {
-                let result = fetch("/members", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(member)
-                }).then((response) => {
-                    alert('response in console');
-                    console.log(response);
-                }).catch((e) => {
-                    console.log(e);
-                });
-            }
-
             function shuffle(array) {
 
-                var date = new Date();
-                var dateString = "" + date.getFullYear() + date.getMonth() + date.getDate() + "1";
-                var p = new Math.seedrandom(dateString);
+                const date = new Date();
+                const dateString = "" + date.getFullYear() + date.getMonth() + date.getDate() + "1";
+                Math.seedrandom(dateString);
 
-                var currentIndex = array.length, temporaryValue, randomIndex;
-
-                // While there remain elements to shuffle...
-                while (0 !== currentIndex) {
-
-                    // Pick a remaining element...
-                    randomIndex = Math.floor(p() * currentIndex);
-                    currentIndex -= 1;
-
-                    // And swap it with the current element.
-                    temporaryValue = array[currentIndex];
-                    array[currentIndex] = array[randomIndex];
-                    array[randomIndex] = temporaryValue;
+                // generate an array of numbers for "today"
+                const rndArray = [];
+                let limit = 50; // this does, effectively, set limit to the number of people on a team
+                while (rndArray.length < limit) {
+                    const rndIndex = Math.floor(Math.random() * limit);
+                    if (rndArray.indexOf(rndIndex) === -1) {
+                        rndArray.push(rndIndex)
+                    };
                 }
+                // loop through our the new array and if the index in our array exists, push it to a new array 
+                const returnArray = [];
+                rndArray.forEach((randy) => {
+                    if (array[randy]) {
+                        returnArray.push(array[randy]);
+                    }
+                });
 
-                return array;
+                return returnArray;
             }
     
-            var prefRef = "basilStandupPrefs",
-                prefs = initFromStorage(),
-                body = document.getElementsByTagName('body')[0];
-            function initFromStorage() {
-                var prefsToReturn,
-                    prefsFromLocalStorage = localStorage.getItem(prefRef),
-                    setDefaultPrefs = function() {
-                        if (prefsToReturn.backgrounds == null) {
-                            prefsToReturn.backgrounds = [
-                                { "teamId": 0, "url": "https://media.giphy.com/media/3o6Zt2EaIuNqzXcHuw/giphy.gif" },
-                                { "teamId": 1, "url": "https://media.giphy.com/media/XFuYZvqNeIvn5izqAL/giphy.gif" },
-                                { "teamId": 2, "url": "https://media.giphy.com/media/wcrQ36BQUn59S/giphy.gif" },
-                                { "teamId": 3, "url": "https://media.giphy.com/media/oSB2kyVCBShna/giphy.gif" },
-                                { "teamId": 4, "url": "https://media.giphy.com/media/T9b13v9voa6q9Fhqex/giphy.gif" }
-                            ];
-                        }
-                        if (prefsToReturn.data == null) {
-                            prefsToReturn.data = {
-                                "members": [
-                                    { "nameLast": "B", "nameFirst": "Marcelo", "id": 0 },
-                                    { "nameLast": "B", "nameFirst": "Catherine", "id": 1 },
-                                    { "nameLast": "C", "nameFirst": "Alexandre", "id": 2 },
-                                    { "nameLast": "C", "nameFirst": "Irene", "id": 3 },
-                                    { "nameLast": "C", "nameFirst": "Mauricio", "id": 4 },
-                                    { "nameLast": "D", "nameFirst": "Jared", "id": 5 },
-                                    { "nameLast": "D", "nameFirst": "Felipe", "id": 6 },
-                                    { "nameLast": "E", "nameFirst": "Isaac", "id": 7 },
-                                    { "nameLast": "G", "nameFirst": "Jeferson", "id": 8 },
-                                    { "nameLast": "L", "nameFirst": "Alice", "id": 9 },
-                                    { "nameLast": "M", "nameFirst": "Laura", "id": 10 },
-                                    { "nameLast": "M", "nameFirst": "Bonnie", "id": 11 },
-                                    { "nameLast": "M", "nameFirst": "Keilla", "id": 12 },
-                                    { "nameLast": "O", "nameFirst": "Chris", "id": 13 },
-                                    { "nameLast": "O", "nameFirst": "Dan", "id": 14 },
-                                    { "nameLast": "S", "nameFirst": "Philip", "id": 15 },
-                                    { "nameLast": "S", "nameFirst": "Filipe", "id": 16 },
-                                    { "nameLast": "S", "nameFirst": "Lisa", "id": 17 },
-                                    { "nameLast": "S", "nameFirst": "Nathan", "id": 18 },
-                                    { "nameLast": "S", "nameFirst": "Weijia", "id": 19 },
-                                    { "nameLast": "T", "nameFirst": "Julio", "id": 20 },
-                                    { "nameLast": "B", "nameFirst": "Josh", "id": 21 },
-                                    { "nameLast": "B", "nameFirst": "Felipe", "id": 22 },
-                                    { "nameLast": "B", "nameFirst": "Aury", "id": 23 },
-                                    { "nameLast": "D", "nameFirst": "Michael", "id": 24 },
-                                    { "nameLast": "G", "nameFirst": "Nancy", "id": 25 },
-                                    { "nameLast": "L", "nameFirst": "Leslie", "id": 26 },
-                                    { "nameLast": "L", "nameFirst": "Drieli", "id": 27 },
-                                    { "nameLast": "M", "nameFirst": "Alexandre", "id": 28 },
-                                    { "nameLast": "R", "nameFirst": "Leonardo", "id": 29 },
-                                    { "nameLast": "S", "nameFirst": "Bianca", "id": 30 },
-                                    { "nameLast": "S", "nameFirst": "Vasken", "id": 31 },
-                                    { "nameLast": "S", "nameFirst": "Luisa", "id": 32 },
-                                    { "nameLast": "V", "nameFirst": "Roy", "id": 33 },
-                                    { "nameLast": "V", "nameFirst": "Nina", "id": 34 },
-                                    { "nameLast": "W", "nameFirst": "Rachel", "id": 35 },
-                                    { "nameLast": "A", "nameFirst": "Igor", "id": 36 },
-                                    { "nameLast": "R", "nameFirst": "Jahaan", "id": 37 },
-                                    { "nameLast": "R", "nameFirst": "Derek", "id": 100 },
-                                    { "nameLast": "J", "nameFirst": "Andre", "id": 101 },
-                                    { "nameLast": "M", "nameFirst": "Esteban", "id": 102 },
-                                    { "nameLast": "A", "nameFirst": "Jennifer", "id": 103 },
-                                    { "nameLast": "A", "nameFirst": "Aimee", "id": 38 },
-                                    { "nameLast": "I", "nameFirst": "Zia", "id": 39 },
-                                    { "nameLast": "A", "nameFirst": "Armand", "id": 40 },
-                                    { "nameLast": "B", "nameFirst": "Renee", "id": 41 },
-                                    { "nameLast": "B", "nameFirst": "Jolene", "id": 42 },
-                                    { "nameLast": "P", "nameFirst": "Tabatha", "id": 43 },
-                                    { "nameLast": "L", "nameFirst": "Chad", "id": 44 },
-                                    { "nameLast": "V", "nameFirst": "Oscar", "id": 45 },
-                                    { "nameLast": "W", "nameFirst": "Jenn", "id": 46 }
-                                ],
-                                "teams": [
-                                    { "id": 0, "name": "DLS 1.0", "nick": "Stego", "members": [ 15, 36, 2, 16, 4, 6, 37, 28, 24 ] },
-                                    { "id": 1, "name": "DLS 2.0", "nick": "Raptor", "members": [ 1, 2, 6, 17, 18, 16, 9, 19, 33, 22, 28, 29, 24, 36, 37, 13, 21, 100] },
-                                    { "id": 2, "name": "Data Vis", "nick": "Bronto", "members": [ 15, 14, 11, 20, 7, 23, 24 ] },
-                                    { "id": 3, "name": "Website", "nick": "TRex", "members": [ 0, 12, 8, 10, 27, 26, 24, 25, 35, 4, 38, 46 ] },
-                                    { "id": 4, "name": "Communications", "nick": "Trex2", "members": [ 3, 12, 8, 10, 34, 24, 25, 35, 4 ] }
-                                ]
-                            };
-                        }
-                    };
+            const body = document.getElementsByTagName('body')[0];
+            const prefRef = "basilStandupPrefs";
+            let prefsFromLocalStorage = localStorage.getItem(prefRef);
+            if (prefsFromLocalStorage) {
+                prefsFromLocalStorage = JSON.parse(prefsFromLocalStorage);
+            }
+            let prefs;
+            prefs = initFromStorage();
 
-                if (prefsFromLocalStorage == null) {
-                    prefsToReturn = {};
-                    setDefaultPrefs();
-                    localStorage.setItem(prefRef, JSON.stringify(prefsToReturn));
-                } else {
-                    prefsToReturn = JSON.parse(prefsFromLocalStorage);
-                    setDefaultPrefs();
-                    for (var key in prefs) {
-                        try {
-                            if (prefs[key] === 'true' || prefs[key] === 'false') {
-                                prefs[key] = (prefs[key] == 'true')
-                            } else {
-                                prefs[key] = JSON.parse(prefs[key]);
-                            }
-                        } catch (e) {
-                            prefs[key] = prefs[key];
+            /** 
+            * Sets user preferences from localStorage or, if undefined, hard-coded defaults
+            * @return {Object} An object with properties for backgrounds and member data
+            */
+            function initFromStorage() {
+                let prefsToReturn = prefsFromLocalStorage || {};
+                const setDefaultPrefs = function() {
+                    if (prefsToReturn.backgrounds == null) {
+                        prefsToReturn.backgrounds = [
+                            { "teamId": 0, "url": "https://media.giphy.com/media/3o6Zt2EaIuNqzXcHuw/giphy.gif" },
+                            { "teamId": 1, "url": "https://media.giphy.com/media/XFuYZvqNeIvn5izqAL/giphy.gif" },
+                            { "teamId": 2, "url": "https://media.giphy.com/media/wcrQ36BQUn59S/giphy.gif" },
+                            { "teamId": 3, "url": "https://media.giphy.com/media/oSB2kyVCBShna/giphy.gif" },
+                            { "teamId": 4, "url": "https://media.giphy.com/media/T9b13v9voa6q9Fhqex/giphy.gif" }
+                        ];
+                    }
+                    if (prefsToReturn.data == null) {
+                        prefsToReturn.data = {
+                            "members": [
+                                { "nameLast": "B", "nameFirst": "Marcelo", "id": 0 },
+                                { "nameLast": "B", "nameFirst": "Catherine", "id": 1 },
+                                { "nameLast": "C", "nameFirst": "Alexandre", "id": 2 },
+                                { "nameLast": "C", "nameFirst": "Irene", "id": 3 },
+                                { "nameLast": "C", "nameFirst": "Mauricio", "id": 4 },
+                                { "nameLast": "D", "nameFirst": "Jared", "id": 5 },
+                                { "nameLast": "D", "nameFirst": "Felipe", "id": 6 },
+                                { "nameLast": "E", "nameFirst": "Isaac", "id": 7 },
+                                { "nameLast": "G", "nameFirst": "Jeferson", "id": 8 },
+                                { "nameLast": "L", "nameFirst": "Alice", "id": 9 },
+                                { "nameLast": "M", "nameFirst": "Laura", "id": 10 },
+                                { "nameLast": "M", "nameFirst": "Bonnie", "id": 11 },
+                                { "nameLast": "M", "nameFirst": "Keilla", "id": 12 },
+                                { "nameLast": "O", "nameFirst": "Chris", "id": 13 },
+                                { "nameLast": "O", "nameFirst": "Dan", "id": 14 },
+                                { "nameLast": "S", "nameFirst": "Philip", "id": 15 },
+                                { "nameLast": "S", "nameFirst": "Filipe", "id": 16 },
+                                { "nameLast": "S", "nameFirst": "Lisa", "id": 17 },
+                                { "nameLast": "S", "nameFirst": "Nathan", "id": 18 },
+                                { "nameLast": "S", "nameFirst": "Weijia", "id": 19 },
+                                { "nameLast": "T", "nameFirst": "Julio", "id": 20 },
+                                { "nameLast": "B", "nameFirst": "Josh", "id": 21 },
+                                { "nameLast": "B", "nameFirst": "Felipe", "id": 22 },
+                                { "nameLast": "B", "nameFirst": "Aury", "id": 23 },
+                                { "nameLast": "D", "nameFirst": "Michael", "id": 24 },
+                                { "nameLast": "G", "nameFirst": "Nancy", "id": 25 },
+                                { "nameLast": "L", "nameFirst": "Leslie", "id": 26 },
+                                { "nameLast": "L", "nameFirst": "Drieli", "id": 27 },
+                                { "nameLast": "M", "nameFirst": "Alexandre", "id": 28 },
+                                { "nameLast": "R", "nameFirst": "Leonardo", "id": 29 },
+                                { "nameLast": "S", "nameFirst": "Bianca", "id": 30 },
+                                { "nameLast": "S", "nameFirst": "Vasken", "id": 31 },
+                                { "nameLast": "S", "nameFirst": "Luisa", "id": 32 },
+                                { "nameLast": "V", "nameFirst": "Roy", "id": 33 },
+                                { "nameLast": "V", "nameFirst": "Nina", "id": 34 },
+                                { "nameLast": "W", "nameFirst": "Rachel", "id": 35 },
+                                { "nameLast": "A", "nameFirst": "Igor", "id": 36 },
+                                { "nameLast": "R", "nameFirst": "Jahaan", "id": 37 },
+                                { "nameLast": "R", "nameFirst": "Derek", "id": 100 },
+                                { "nameLast": "J", "nameFirst": "Andre", "id": 101 },
+                                { "nameLast": "M", "nameFirst": "Esteban", "id": 102 },
+                                { "nameLast": "A", "nameFirst": "Jennifer", "id": 103 },
+                                { "nameLast": "A", "nameFirst": "Aimee", "id": 38 },
+                                { "nameLast": "I", "nameFirst": "Zia", "id": 39 },
+                                { "nameLast": "A", "nameFirst": "Armand", "id": 40 },
+                                { "nameLast": "B", "nameFirst": "Renee", "id": 41 },
+                                { "nameLast": "B", "nameFirst": "Jolene", "id": 42 },
+                                { "nameLast": "P", "nameFirst": "Tabatha", "id": 43 },
+                                { "nameLast": "L", "nameFirst": "Chad", "id": 44 },
+                                { "nameLast": "V", "nameFirst": "Oscar", "id": 45 },
+                                { "nameLast": "W", "nameFirst": "Jenn", "id": 46 }
+                            ],
+                            "teams": [
+                                { "id": 0, "name": "DLS 1.0", "nick": "Stego", "members": [ 15, 36, 2, 16, 4, 6, 37, 28, 24 ] },
+                                { "id": 1, "name": "DLS 2.0", "nick": "Raptor", "members": [ 1, 2, 6, 17, 18, 16, 9, 19, 33, 22, 28, 29, 24, 36, 37, 13, 21, 100] },
+                                { "id": 2, "name": "Data Vis", "nick": "Bronto", "members": [ 15, 14, 11, 20, 7, 23, 24 ] },
+                                { "id": 3, "name": "Website", "nick": "TRex", "members": [ 0, 12, 8, 10, 27, 26, 24, 25, 35, 4, 38, 46 ] },
+                                { "id": 4, "name": "Communications", "nick": "Trex2", "members": [ 3, 12, 8, 10, 34, 24, 25, 35, 4 ] }
+                            ]
+                        };
+                    }
+                };
+
+                setDefaultPrefs(); // only sets if null
+                for (var key in prefs) {
+                    try {
+                        if (prefs[key] === 'true' || prefs[key] === 'false') {
+                            prefs[key] = (prefs[key] == 'true')
+                        } else {
+                            prefs[key] = JSON.parse(prefs[key]);
                         }
+                    } catch (e) {
+                        prefs[key] = prefs[key];
                     }
                 }
                 return prefsToReturn;
@@ -247,7 +236,6 @@
                         ]
                     }
                 }
-                localStorage.setItem(prefRef, JSON.stringify(prefs));
                 if (newBkg.indexOf('http') > 0) {
                     body.style.backgroundImage = newBkg;
                 } else {
@@ -260,7 +248,6 @@
                 } else {
                     prefs.data = null;
                 }
-                localStorage.setItem(prefRef, JSON.stringify(prefs));
             }
 
             const urlParams = new URLSearchParams(window.location.search);
@@ -366,22 +353,30 @@
 
                 document.getElementById('saveBackgroundButton').onclick = (e) => {
                     setBackground(changeBackgroundInput.value);
+                    localStorage.setItem(prefRef, JSON.stringify(prefs));
                     modals[0].hide();
+                    window.location.reload(false); 
                 };
 
                 document.getElementById('resetBackgroundButton').onclick = (e) => {
                     setBackground();
+                    localStorage.setItem(prefRef, JSON.stringify(prefs));
                     modals[0].hide();
+                    window.location.reload(false); 
                 }
 
                 document.getElementById('resetTeamButton').onclick = (e) => {
                     saveTeamData();
+                    localStorage.setItem(prefRef, JSON.stringify(prefs));
                     modals[1].hide();
+                    window.location.reload(false); 
                 }
 
                 document.getElementById('saveTeamButton').onclick = (e) => {
                     saveTeamData(teamsdataTextarea.value);
+                    localStorage.setItem(prefRef, JSON.stringify(prefs));
                     modals[1].hide();
+                    window.location.reload(false); 
                 }
 
             }
