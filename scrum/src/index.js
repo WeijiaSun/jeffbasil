@@ -18,6 +18,8 @@ const urlParams = new URLSearchParams(window.location.search);
 let qsTeam = urlParams.get(`team`);
 if (qsTeam) {
   qsTeam = qsTeam.toLowerCase();
+} else {
+  qsTeam = `support`;
 }
 
 if (qsTeam) {
