@@ -2,7 +2,6 @@ export const data = {
   "heroes": [
     { "area": "Engineer", "name": "DanO", "leagues": ["Support"] },
     { "area": "Engineer", "name": "JulioT", "leagues": ["Support"] },
-    { "area": "Manager", "name": "PhilipS", "leagues": ["Support"] },
     {
       "area": "Design",
       "name": "MichaelD",
@@ -49,18 +48,13 @@ export const data = {
 
     {
       "area": "Content",
-      "name": "AimeeA",
-      "leagues": ["Support", "Community", "Components"]
-    },
-    {
-      "area": "Content",
       "name": "RachelW",
-      "leagues": ["Support", "Community", "Components"]
+      "leagues": ["Community", "Components"]
     },
     {
       "area": "Content",
       "name": "RandallW",
-      "leagues": ["Support", "Community", "Components"]
+      "leagues": ["Community", "Components"]
     }
   ],
   "leagues": [
