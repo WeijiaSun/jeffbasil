@@ -106,7 +106,7 @@ if (qsTeam) {
   };
 
   // global.prefs.pivotal.token = prompt(`Pivotal Token:`);
-  setBackground(`https://media.giphy.com/media/3f63VcWeaGeaQ6AfKk/giphy.gif`);
+  setBackground(`https://media.giphy.com/media/Ny6tc0CUS0CmQ/giphy.gif`);
   initialize();
   // pivotal.getMe();
   // https://media.giphy.com/media/3f63VcWeaGeaQ6AfKk/giphy.gif
