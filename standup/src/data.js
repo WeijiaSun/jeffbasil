@@ -45,7 +45,7 @@ export const data = {
 
     {
       "area": "Content",
-      "name": "RachelW",
+      "name": "RileyW",
       "leagues": ["Community", "Components"]
     },
     {
