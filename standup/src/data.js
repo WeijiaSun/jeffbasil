@@ -39,7 +39,7 @@ export const data = {
     { "area": "Design", "name": "FelipeB", "leagues": ["Components"] },
     { "area": "Design", "name": "AileenF", "leagues": ["Components"] },
     { "area": "Design", "name": "LouB", "leagues": ["Components"] },
-    { "area": "Design", "name": "MaraR", "leagues": ["Components"] },
+    { "area": "Design", "name": "MaraR", "leagues": ["Community"] },
     { "area": "Design", "name": "AlexandreM", "leagues": ["Components"] },
     { "area": "Design", "name": "MirandaH", "leagues": ["Components"] },
 
