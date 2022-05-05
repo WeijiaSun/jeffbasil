@@ -17,7 +17,7 @@ export const data = {
     { "area": "Design", "name": "NinaV", "leagues": ["Community"] },
     { "area": "Design", "name": "DrieliL", "leagues": ["Community"] },
     { "area": "Design", "name": "DaianaR", "leagues": ["Community"] },
-    { "area": "Design", "name": "GabrielF", "leagues": ["Community", "Support"] },
+    { "area": "Design", "name": "GabrielF", "leagues": ["Support"] },
     { "area": "Design", "name": "CleoS", "leagues": ["Community"] },
 
     { "area": "Manager", "name": "LisaS", "leagues": ["Components"] },
