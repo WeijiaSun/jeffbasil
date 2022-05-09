@@ -105,8 +105,9 @@ if (qsTeam) {
     });
   };
 
-  setBackground(`https://media.giphy.com/media/26u43GwxpIiUgrHI4/giphy.gif`);
+  setBackground(`https://media.giphy.com/media/CKlafeh1NAxz35KTq4/giphy-downsized-large.gif`);
   initialize();
+  // https://media.giphy.com/media/26u43GwxpIiUgrHI4/giphy.gif
   // https://media.giphy.com/media/l1J3E6f7RJSm97wZy/giphy.gif
   // https://media.giphy.com/media/Ny6tc0CUS0CmQ/giphy.gif
   // https://media.giphy.com/media/3f63VcWeaGeaQ6AfKk/giphy.gif
