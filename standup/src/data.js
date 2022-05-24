@@ -13,7 +13,6 @@ export const data = {
     { "area": "Engineer", "name": "JefersonG", "leagues": ["Community"] },
     { "area": "Engineer", "name": "LauraM", "leagues": ["Community"] },
     { "area": "Engineer", "name": "AliceL", "leagues": ["Community"] },
-    { "area": "Design", "name": "LeslieL", "leagues": ["Community"] },
     { "area": "Design", "name": "NinaV", "leagues": ["Community"] },
     { "area": "Design", "name": "DrieliL", "leagues": ["Community"] },
     { "area": "Design", "name": "DaianaR", "leagues": ["Community"] },
