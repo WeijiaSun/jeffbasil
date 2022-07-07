@@ -2,11 +2,8 @@ export const data = {
     "heroes": [
       { "area": "Engineer", "name": "DanO", "leagues": ["Support", "Community"] },
       { "area": "Engineer", "name": "JulioT", "leagues": ["Support"] },
-      {
-        "area": "Design",
-        "name": "MichaelD",
-        "leagues": ["Support", "Components"]
-      },
+      { "area": "Design", "name": "GabrielF", "leagues": ["Support"] },
+      { "area": "Design", "name": "MichaelD", "leagues": ["Support", "Components"] },
   
       { "area": "Manager", "name": "MarceloB", "leagues": ["Community"] },
       { "area": "Engineer", "name": "BonnieM", "leagues": ["Community"] },
@@ -16,8 +13,9 @@ export const data = {
       { "area": "Design", "name": "NinaV", "leagues": ["Community"] },
       { "area": "Design", "name": "DrieliL", "leagues": ["Community"] },
       { "area": "Design", "name": "DaianaR", "leagues": ["Community"] },
-      { "area": "Design", "name": "GabrielF", "leagues": ["Support"] },
       { "area": "Design", "name": "CleoS", "leagues": ["Community"] },
+      { "area": "Design", "name": "AnshikaS", "leagues": ["Community"] },
+      { "area": "Design", "name": "PaulE", "leagues": ["Community"] },
   
       { "area": "Manager", "name": "LisaS", "leagues": ["Components"] },
       { "area": "Engineer", "name": "NathanS", "leagues": ["Components"] },
