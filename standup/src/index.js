@@ -105,10 +105,18 @@ if (qsTeam) {
     });
   };
 
-  setBackground(`https://media.giphy.com/media/CKlafeh1NAxz35KTq4/giphy-downsized-large.gif`);
+  const backgrounds = [
+      `https://media.giphy.com/media/CKlafeh1NAxz35KTq4/giphy-downsized-large.gif`,
+      `https://media.giphy.com/media/26u43GwxpIiUgrHI4/giphy.gif`,
+      `https://media.giphy.com/media/l1J3E6f7RJSm97wZy/giphy.gif`,
+      `https://media.giphy.com/media/Ny6tc0CUS0CmQ/giphy.gif`,
+      `https://media.giphy.com/media/J6DQHT6q58A66kfFxb/giphy.gif`,
+      `https://media.giphy.com/media/l41Yx9tEWUwyEsy8E/giphy.gif`,
+      `https://media.giphy.com/media/8lGQNlZqYBP86D4Cep/giphy.gif`,
+      `https://media.giphy.com/media/1gdr0AVrek4Q1fOs3Z/giphy-downsized-large.gif`,
+      `https://media.giphy.com/media/YNYSyuGCHT7he/giphy.gif`,
+  ];
+  const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  setBackground(randomBackground);
   initialize();
-  // https://media.giphy.com/media/26u43GwxpIiUgrHI4/giphy.gif
-  // https://media.giphy.com/media/l1J3E6f7RJSm97wZy/giphy.gif
-  // https://media.giphy.com/media/Ny6tc0CUS0CmQ/giphy.gif
-  // https://media.giphy.com/media/3f63VcWeaGeaQ6AfKk/giphy.gif
 }
