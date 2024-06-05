@@ -1,9 +1,6 @@
 export const data = {
     "heroes": [
-        { "area": "Engineer", "name": "DanO", "leagues": ["Support", "Statisfaction"] },
-        { "area": "Engineer", "name": "JulioT", "leagues": ["Support", "Statisfaction"] },
-        { "area": "Design", "name": "GabrielF", "leagues": ["Support", "Statisfaction"] },
-        { "area": "Design", "name": "MichaelD", "leagues": ["Support", "Components"] },
+        { "area": "Design", "name": "MichaelD", "leagues": ["Community"] },
 
         { "area": "Manager", "name": "MarceloB", "leagues": ["Community"] },
         { "area": "Engineer", "name": "BrunoB", "leagues": ["Community"] },
@@ -32,20 +29,31 @@ export const data = {
         { "area": "Design", "name": "LouB", "leagues": ["Components"] },
         { "area": "Design", "name": "MaraR", "leagues": ["Community"] },
         { "area": "Design", "name": "AlexandreM", "leagues": ["Components"] },
-        { "area": "Design", "name": "MirandaH", "leagues": ["Components", "Statisfaction"] },
         { "area": "Content", "name": "RileyW", "leagues": ["Components"] },
         { "area": "Content", "name": "JennW", "leagues": ["Components"] },
 
-        { "area": "Design", "name": "DanielB", "leagues": ["Statisfaction"] },
+        { "area": "Manager", "name": "DeboraP", "leagues": ["Frameworks"] },
+
+        { "area": "Manager", "name": "PedroP", "leagues": ["Statisfaction"] },
         { "area": "Design", "name": "ManuL", "leagues": ["Statisfaction"] },
-        { "area": "Manager", "name": "DeboraP", "leagues": ["Statisfaction"] },
+        { "area": "Design", "name": "DanielB", "leagues": ["Statisfaction"] },
+        { "area": "Design", "name": "LauraDC", "leagues": ["Statisfaction"] },
+        { "area": "Design", "name": "MirandaH", "leagues": ["Statisfaction"] },
+        { "area": "Design", "name": "PedroS", "leagues": ["Statisfaction"] },
         { "area": "Engineer", "name": "JuanO", "leagues": ["Statisfaction"] },
+        { "area": "Engineer", "name": "DanO", "leagues": ["Support", "Statisfaction"] },
         { "area": "Engineer", "name": "IsaacE", "leagues": ["Statisfaction"] },
+        { "area": "Engineer", "name": "JuanO", "leagues": ["Statisfaction"] },
+        { "area": "Content", "name": "MarshalT", "leagues": ["Statisfaction"] },
     ],
     "leagues": [
         {
             "name": "Support",
             "detail": "Tooling, Analytics, and Management of Issues"
+        },
+        {
+            "name": "Frameworks",
+            "detail": "Angular and React versions of DDS2.x"
         },
         {
             "name": "Community",
